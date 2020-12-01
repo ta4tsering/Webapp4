@@ -6,9 +6,9 @@ from wtforms.validators import DataRequired, Length, EqualTo,Email
 class RegistrationForm(FlaskForm):
     workid = StringField('Work id',
                            validators=[DataRequired(), Length(min=2, max=20)])
-    email = StringField('Email',
+    engine_option = StringField('OCR Engine Option',
                         validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password',
-                                     validators=[DataRequired(), EqualTo('password')])
+    engine_user = PasswordField('OCR Engine User', validators=[DataRequired()])
+    confirm_engine_user = PasswordField('',
+                                     validators=[DataRequired(), EqualTo('engine_user')])
     submit = SubmitField('Sign Up')
