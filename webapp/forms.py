@@ -4,9 +4,9 @@ from wtforms.validators import DataRequired, Length
 
 
 class RegistrationForm(FlaskForm):
-    workid = StringField('Work id',
+    workid = StringField('Work Id',
                            validators=[DataRequired(), Length(min=2, max=20)])
-    engine_option = StringField('OCR Engine Option',
+    user_key = PasswordField('User Key',
                         validators=[DataRequired()])
-    engine_user = PasswordField('OCR Engine User', validators=[DataRequired()])
-    submit = SubmitField('Run The OCR')
+    engine_option = StringField('Engine Option', validators=[DataRequired()])
+    submit = SubmitField('Run the OCR')
