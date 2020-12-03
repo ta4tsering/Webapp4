@@ -1,23 +1,12 @@
 from flask import render_template, url_for, flash, redirect
 from webapp import app
 from webapp.forms import RegistrationForm
-from webapp.models import User, Post
-
-
-posts = [
-    {
-        'author': 'Tashi Tsering',
-        'title': 'How to use this ',
-        'content': 'First post content',
-        'date_posted': 'April 20, 2018'
-    }
-]
 
 
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html', posts=posts)
+    return render_template('home.html')
 
 
 @app.route("/OCR", methods=['GET', 'POST'])
