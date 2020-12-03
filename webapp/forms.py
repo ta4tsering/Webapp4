@@ -3,7 +3,7 @@ from wtforms import StringField, PasswordField, SubmitField, BooleanField, Radio
 from wtforms.validators import DataRequired, Length
 
 
-class RegistrationForm(FlaskForm):
+class OCRForm(FlaskForm):
     workid = StringField('Work Id',
                            validators=[DataRequired(), Length(min=2, max=20)])
     user_key = PasswordField('User Key',
