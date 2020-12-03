@@ -1,15 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
-    {% for post in posts %}
         <article class="media content-section">
           <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{ post.author }}</a>
-              <small class="text-muted">{{ post.date_posted }}</small>
-            </div>
-            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
+            <h1><a class="article-title" >How to use this WebApp</a></h1>
+            <h6><p class="article-content">
+            <h4> Requirements before using the webapp<br></h4>
+                    -:  Workid of the pecha<br>
+                    -:  Secret key to use the webapp<br>
+                    -:  Pictures of the pecha<br><br>
+
+            <h4> Steps to do it <br></h4>
+
+                1.  First get the workid of the pecha.<br>
+                2.  Put the secret key to use this webapp.<br>
+                3.  Then get the pictures of the pecha for to run OCR.<br>
+                4.  choose the OCR engine from Google-OCR or Namsel-OCR.<br>
+                5.  Press the "Run the OCR" button.<br>
+            </p></h6>
           </div>
         </article>
-    {% endfor %}
 {% endblock content %}
