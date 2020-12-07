@@ -1,11 +1,9 @@
 import os
 import secrets
-from webapp import app
 from PIL import Image
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect
+from webapp import app
 from webapp.forms import OCRForm
-
-
 
 user_key = "tashi123"
 
