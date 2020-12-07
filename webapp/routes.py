@@ -1,6 +1,3 @@
-import os
-import secrets
-from PIL import Image
 from flask import render_template, url_for, flash, redirect
 from webapp import app
 from webapp.forms import OCRForm
