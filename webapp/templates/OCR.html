@@ -20,6 +20,19 @@
                     {% endif %}
                 </div>
                 <div class="form-group">
+                    {{ form.user_key.label(class="form-control-label") }}
+                    {% if form.user_key.errors %}
+                        {{ form.user_key(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.user_key.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.user_key(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
                     {{ form.engine_option.label(class="form-control-label") }}
                     {% if form.engine_option.errors %}
                         {{ form.engine_option(class="form-control form-control-lg is-invalid") }}
@@ -31,20 +44,7 @@
                     {% else %}
                         {{ form.engine_option(class="form-control form-control-lg") }}
                     {% endif %}
-                </div>
-                <div class="form-group">
-                    {{ form.engine_user.label(class="form-control-label") }}
-                    {% if form.engine_user.errors %}
-                        {{ form.engine_user(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.engine_user.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.engine_user(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
+                </div> 
             </fieldset>
             <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}

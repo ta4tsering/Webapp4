@@ -1,31 +1,22 @@
-from flask import render_template, url_for, flash, redirect
+import os
+import secrets
 from webapp import app
-from webapp.forms import RegistrationForm
-from webapp.models import User, Post
+from PIL import Image
+from flask import render_template, url_for, flash, redirect, request
+from webapp.forms import OCRForm
 
 
-posts = [
-    {
-        'author': 'Tashi Tsering',
-        'title': 'How to use this ',
-        'content': 'First post content',
-        'date_posted': 'April 20, 2018'
-    }
-]
 
+user_key = "tashi123"
 
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html', posts=posts)
+    return render_template('home.html')
 
 
-@app.route("/OCR", methods=['GET', 'POST'])
+@app.route("/OCR" )
 def OCR():
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        flash(f'Account created for {form.workid.data}!', 'success')
-        return redirect(url_for('home'))
+    form = OCRForm()
     return render_template('OCR.html', title='OCR', form=form)
-
 
