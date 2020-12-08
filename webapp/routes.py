@@ -5,9 +5,9 @@ from webapp.forms import OCRForm
 
 
 @app.route("/")
-@app.route("/home")
-def home():
-    return render_template('home.html')
+@app.route("/webapp")
+def webapp():
+    return render_template('webapp.html')
 
 
 @app.route("/OCR", methods=['GET', 'POST'])
