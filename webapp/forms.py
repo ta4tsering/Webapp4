@@ -4,7 +4,7 @@ from wtforms import StringField, PasswordField, SubmitField, BooleanField, Selec
 from wtforms.validators import DataRequired, Length,ValidationError
 
 
-user_key = "Tashi9Tsering"
+user_id = "Tashi9Tsering"
 
 class MultiCheckboxField(SelectMultipleField):
     widget = widgets.ListWidget(prefix_label=False)
@@ -22,7 +22,7 @@ class OCRForm(FlaskForm):
 
 
     def validate_userkey(self, user_key):
-        if user_key.data != user_key:
+        if user_key.data != user_id:
             raise ValidationError('This User Key is invalid. ')
 
     
