@@ -14,7 +14,7 @@ class OCRForm(FlaskForm):
     user_token = PasswordField('User Token',
                         validators=[DataRequired()])
     pecha_pictures = FileField('Upload Pictures', 
-                        validators=[FileAllowed(['jpg','png'])])
+                        validators=[FileAllowed(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'files'])])
     engine_choices = MultiCheckboxField('Engine Option', 
                         choices=[('Namsel', 'Namsel OCR Engine'),('Google', 'Google OCR Engine')]) 
     submit = SubmitField('Run the OCR')
