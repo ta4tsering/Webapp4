@@ -11,9 +11,10 @@ class MultiCheckboxField(SelectMultipleField):
 class OCRForm(FlaskForm):
     workid = StringField('Work Id',
                            validators=[DataRequired(), Length(min=2, max=20)])
-    user_key = StringField('User Token',
+    user_token = PasswordField('User Token',
                         validators=[DataRequired()])
-    pecha_pictures = FileField('Upload Pictures', validators=[FileAllowed(['jpg','png'])])
+    pecha_pictures = FileField('Upload Pictures', 
+                        validators=[FileAllowed(['jpg','png'])])
     engine_choices = MultiCheckboxField('Engine Option', 
                         choices=[('Namsel', 'Namsel OCR Engine'),('Google', 'Google OCR Engine')]) 
     submit = SubmitField('Run the OCR')
