@@ -2,7 +2,7 @@ import os
 from flask import render_template, url_for, flash, redirect, request, abort
 from webapp import app, bcrypt
 from webapp.forms import OCRForm
-# from werkzeug import secure_filename
+from webapp.utils import utility
 
 
 
@@ -20,13 +20,23 @@ def OCR():
         OCR_engine = form.engine_choices.data
         if form.user_token.data != app.config['SECRET']:
             return abort(404)
-        else:
-            return f"OCR is running on {work} using engine {OCR_engine} .."
-        if request.method == 'POST':
-            f = request.files[f'{form.pecha_pictures.data}']
-            if f.filename == '':
-                flash('No selected file')
-                return redirect(request.url)
-            f.save(os.path.join(app.config['UPLOAD_FOLDER'], f))
+        elif request.method == 'POST':
+            if request.files:
+                work_file = request.files["work_file"]
+                work_file.save(os.path.join(app.config["FILES_UPLOAD"], work_file.filename))
+                return f'OCR is running on {work} using engine {OCR_engine}'
+            utility()
+        return f'OCR is running on {work} using engine {OCR_engine}'
     return render_template('OCR.html', title='OCR', form=form)
+    #     else:
+    #         return f"OCR is running on {work} using engine {OCR_engine} .."
+    #     if request.method == 'POST':
+    #         infile = form.work_file.data
+    #         if infile.filename == '':
+    #             flash('No selected file')
+    #             return redirect(request.url)
+    #         file_content = utility(infile)
+    #     return f'the work id { file_content}'
+    # return render_template('OCR.html', title='OCR', form=form)
+
 
