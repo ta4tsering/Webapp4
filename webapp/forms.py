@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectMultipleField, widgets
-from wtforms.validators import DataRequired, Length,ValidationError
+from wtforms.validators import DataRequired, Optional, Length, ValidationError
 
 
 class MultiCheckboxField(SelectMultipleField):
@@ -10,14 +10,16 @@ class MultiCheckboxField(SelectMultipleField):
 
 class OCRForm(FlaskForm):
     workid = StringField('Work Id',
-                           validators=[Length(min=2, max=20)])
+                           validators=[Optional(strip_whitespace=True),Length(min=2, max=20)])
     user_token = PasswordField('User Token',
                         validators=[DataRequired()])
     work_file = FileField('Upload Work files',
                         validators=[FileAllowed(['txt'])])
     engine_choices = MultiCheckboxField('Engine Option', 
                         choices=[('Namsel', 'Namsel OCR Engine'),('Google', 'Google OCR Engine')])
+    submit = SubmitField('Run the OCR')
     
+
 
 
 

@@ -61,8 +61,11 @@
                     {% endif %}
                     </div>
                 </div>
+                <button type="button" class="btn btn-secondary">Upload file</button>
             </fieldset>
-            <button type="submit" class="btn btn-primary">Upload</button>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div> 
         </form>
     </div>
 {% endblock content %}

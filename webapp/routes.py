@@ -28,15 +28,3 @@ def OCR():
             utility()
         return f'OCR is running on {work} using engine {OCR_engine}'
     return render_template('OCR.html', title='OCR', form=form)
-    #     else:
-    #         return f"OCR is running on {work} using engine {OCR_engine} .."
-    #     if request.method == 'POST':
-    #         infile = form.work_file.data
-    #         if infile.filename == '':
-    #             flash('No selected file')
-    #             return redirect(request.url)
-    #         file_content = utility(infile)
-    #     return f'the work id { file_content}'
-    # return render_template('OCR.html', title='OCR', form=form)
-
-
