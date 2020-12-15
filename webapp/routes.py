@@ -16,15 +16,17 @@ def webapp():
 def OCR(): 
     form = OCRForm()
     if form.validate_on_submit():
-        work = form.workid.data
         OCR_engine = form.engine_choices.data
         if form.user_token.data != app.config['SECRET']:
             return abort(404)
-        elif request.method == 'POST':
-            if request.files:
-                work_file = request.files["work_file"]
-                work_file.save(os.path.join(app.config["FILES_UPLOAD"], work_file.filename))
+        else:
+            if form.workid.data:
+                work = form.workid.data
                 return f'OCR is running on {work} using engine {OCR_engine}'
-            utility()
-        return f'OCR is running on {work} using engine {OCR_engine}'
+            elif request.method == 'POST':
+                if request.files:
+                    work_file = request.files["work_file"]
+                    work_file.save(os.path.join(app.config["FILES_UPLOAD"], work_file.filename))
+                    return f'OCR is running on engine {OCR_engine}'
+                utility()
     return render_template('OCR.html', title='OCR', form=form)
